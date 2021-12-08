@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favourite Movies</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <div id="backdrop" class="myClose"></div>
+    <header class="header p-3">
+        <div class="text-header">
+        <h1 class="p-2 text-white"><strong>
+            Favourite Movies</strong></h1>
+        <button class="btn text-dark btnAdd">
+           <strong> Add Movie</strong></button>
+    </div>
+    </header>
+    <div class="myModal animate__animated animate__fadeInDown">
+        <div class="modal-content p-4">
+            <i class="fas fa-times myClose"></i>
+            <div class="form-group">
+                <label for="title">Movie Title</label>
+                <input type="text" id="title" name="title" class="form-control">
+                <label for="image">Image url</label>
+                <input type="text" id="image" name="image" class="form-control">
+                <label for="rating">Your ratings</label>
+                <input type="number" min="1" max="5" step="1" id="rating" name="rating" class="form-control">
+                <label for="trailer">Trailer url</label>
+                <input type="text" id="trailer" name="trailer" class="form-control">
+            </div>
+        </div>
+        <div class="modal-action p-3">
+            <button class="btn btn-info myClose addMovieCard shadow">Add Movie</button>
+            <button class="btn btn-info myClose updateMovie shadow">Update Movie</button>
+            <button class="btn btn-danger myClose ml-3">Cancel</button>
+        </div>
+    </div>
+    <div class="container mt-3">
+        <div class="row movie_card">
+
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Are you sure want to delete this?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger modalDelete" data-dismiss="modal">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+        crossorigin="anonymous"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>
