@@ -1,0 +1,32 @@
+{
+  "Movies": [
+    {
+      "title": "abc",
+      "image_url": "https://img1.hotstarext.com/image/upload/f_auto,t_web_m_1x/sources/r1/cms/prod/5084/875084-h",
+      "rating": "5",
+      "trailer": "kjkjk",
+      "id": "b6459696-ea32-4d8d-b64c-1370806a6033"
+    },
+    {
+      "title": "dfg",
+      "image_url": "https://img1.hotstarext.com/image/upload/f_auto,t_web_m_1x/sources/r1/cms/prod/5084/875084-h",
+      "rating": "5",
+      "trailer": "reee",
+      "id": "5df00bc5-8ce1-4d71-9f88-86c97f25473a"
+    },
+    {
+      "title": "ghj",
+      "image_url": "https://img1.hotstarext.com/image/upload/f_auto,t_web_m_1x/sources/r1/cms/prod/5084/875084-h",
+      "rating": "5",
+      "trailer": "reee",
+      "id": "e7c83d90-cf83-41d2-83d9-8a6eed83562e"
+    },
+    {
+      "title": "rty",
+      "image_url": "https://img1.hotstarext.com/image/upload/f_auto,t_web_m_1x/sources/r1/cms/prod/5084/875084-h",
+      "rating": "5",
+      "trailer": "reee",
+      "id": "22cdf4e1-1665-43fa-96ed-c0493bbfb1f6"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "mm-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "mm-server": "json-server --watch db.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anu08nidhi/Movie-Modal.git"
+  },
+  "author": "TeamB",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Anu08nidhi/Movie-Modal/issues"
+  },
+  "homepage": "https://github.com/Anu08nidhi/Movie-Modal#readme"
+}
