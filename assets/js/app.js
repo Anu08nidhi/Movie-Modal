@@ -73,7 +73,8 @@ const onClickUpdate = () => {
         headers: {
             'content-type': 'application/json; charset="UTF-8"',
             'token': 'bearer token: movie token'
-        }})
+        }
+    })
     updateMovie.style.display = "none";
     addMovieCard.style.display = "inline-block";
 }
@@ -81,7 +82,31 @@ const onClickUpdate = () => {
 const onDelete = (e) => {
     let getId = e.getAttribute('data-target');
     let deleteUrl = `${baseUrl}/${getId}`
-    fetch(deleteUrl , {method : "DELETE"})
+    fetch(deleteUrl, { method: "DELETE" })
+}
+const onWatchTrailer = (e) => {
+    let getId = e.getAttribute('data-target');
+    cl(getId);
+    let site = "";
+    movieArray.forEach((mov) => {
+        if (getId === mov.id) {
+            site = mov.trailer
+        }
+        cl(site);
+    })
+    window.open(site, '_blank')
+}
+let movieArray = [];
+const onClickAddCard = () => {
+    movieArray.push(movieObj);
+    cl(movieArray);
+    localStorage.setItem("localMovieArray", JSON.stringify(movieArray));
+    templating();
+    title.value = "";
+    image_url.value = "";
+    rating.value = "";
+    trailer.value = "";
+
 }
 
 function templating(arr) {
@@ -190,31 +215,7 @@ fetchdata(baseUrl);
 //     templating();
 // }
 
-// const onWatchTrailer = (e) => {
-//     let getId = e.getAttribute('data-target');
-//     cl(getId);
-//     let site = "";
-//     movieArray.forEach((mov) => {
-//         if(getId === mov.id){
-//             site = mov.trailer
-//         }
-//         cl(site);
-//     })
-//     window.open(site, '_blank')
-// }
-// let movieArray = [];
-// const onClickAddCard = () => {
 
-//     movieArray.push(movieObj);
-//     cl(movieArray);
-//     localStorage.setItem("localMovieArray", JSON.stringify(movieArray));
-//     templating();
-//         title.value = "";
-//         image_url.value = "";
-//         rating.value = "";
-//         trailer.value = "";
-
-// }
 // addMovieCard.addEventListener('click',onClickAddCard);
 // updateMovie.addEventListener('click', onClickUpdate);
 // modalDelete.addEventListener('click', onClickModalDelete);
