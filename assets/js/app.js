@@ -15,23 +15,11 @@ const trailer = document.getElementById('trailer');
 let baseUrl = "http://localhost:3000/Movies";
 let movieObj;
 
-fetch(baseUrl)
+function fetchdata(url) {
+    fetch(url)
         .then(response => response.json())
         .then(data => templating(data));
-// function makeApicall(url, method, body) {
-//     fetch(url)
-//         .then(response => response.json())
-//         .then(data => cl(data));
-// }
-// async function fetchData() {
-//     let responseData = await makeApicall(baseUrl, "GET");
-//     let newResponseData = await responseData.json();
-//     cl(newResponseData)
-//     templating(newResponseData);
-// }
-
-
-
+}
 
 const onToggleHandler = () => {
     myModal.classList.toggle('visible');
@@ -42,10 +30,8 @@ const onClickAddMovie = () => {
         title: title.value,
         image_url: image_url.value,
         rating: rating.value,
-        trailer: trailer.value,
-        id: uuidv4()
+        trailer: trailer.value
     }
-    cl(movieObj);
     fetch(baseUrl, {
         method: "POST",
         body: JSON.stringify(movieObj),
@@ -54,11 +40,48 @@ const onClickAddMovie = () => {
             'token': 'bearer token: movie token'
         }
     })
-    fetch(baseUrl, "POST")
-    cl(data);
 }
-const onEdit = () =>{
-    
+const onEdit = (e) => {
+    onToggleHandler();
+    let getId = e.getAttribute('data-target');
+    let editUrl = `${baseUrl}/${getId}`
+    localStorage.setItem("MovieId", JSON.stringify(getId));
+    fetch(editUrl)
+        .then(response => response.json())
+        .then(data => {
+            title.value = data.title,
+                image_url.value = data.image_url,
+                rating.value = data.rating,
+                trailer.value = data.trailer
+        });
+    updateMovie.style.display = "inline-block";
+    addMovieCard.style.display = "none";
+}
+
+const onClickUpdate = () => {
+    let updateObj = {
+        title: title.value,
+        image_url: image_url.value,
+        rating: rating.value,
+        trailer: trailer.value
+    }
+    let getId = JSON.parse(localStorage.getItem("MovieId"));
+    let patchUrl = `${baseUrl}/${getId}`
+    fetch(patchUrl, {
+        method: "PATCH",
+        body: JSON.stringify(updateObj),
+        headers: {
+            'content-type': 'application/json; charset="UTF-8"',
+            'token': 'bearer token: movie token'
+        }})
+    updateMovie.style.display = "none";
+    addMovieCard.style.display = "inline-block";
+}
+
+const onDelete = (e) => {
+    let getId = e.getAttribute('data-target');
+    let deleteUrl = `${baseUrl}/${getId}`
+    fetch(deleteUrl , {method : "DELETE"})
 }
 
 function templating(arr) {
@@ -82,16 +105,6 @@ function templating(arr) {
                             </div>`
     })
     movie_card.innerHTML = output;
-    cl(ele.image_url);
-    cl(output);
-}
-
-//uuid generator
-function uuidv4() {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-        return v.toString(16);
-    });
 }
 
 btnAdd.addEventListener('click', onToggleHandler);
@@ -100,7 +113,8 @@ myClose.forEach((close) => {
 });
 
 addMovieCard.addEventListener('click', onClickAddMovie);
-
+updateMovie.addEventListener('click', onClickUpdate);
+fetchdata(baseUrl);
 
 
 
@@ -119,7 +133,7 @@ addMovieCard.addEventListener('click', onClickAddMovie);
 
 // //edit & delete, update, modalDelete, watchTrailer Click Functions
 // const onEdit = (e) => {
-//     // cl(e)
+//     cl(e)
 //     let getId = e.getAttribute('data-target');
 //     cl(getId);
 //     onToggleHandler();
@@ -130,7 +144,7 @@ addMovieCard.addEventListener('click', onClickAddMovie);
 //     })
 //     cl(EditedArr);
 //     title.value = EditedArr.title;
-//     image_url.value = EditedArr.url;
+//     image_url.value = EditedArr.image_url;
 //     rating.value = EditedArr.rating;
 //     trailer.value = EditedArr.trailer;
 //     localStorage.setItem("MovieId", JSON.stringify(getId));
